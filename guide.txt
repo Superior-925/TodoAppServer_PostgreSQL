@@ -29,17 +29,7 @@
     f. .gitignore
         .vscode
         node_modules
-    g. index.html, styles.css, myicon.ico -> copy from Block_1/Lesson_2/Lesson_2_1
-    h. Readme.md
-
-    i. webpack.config.js
-        - npm i -D html-webpack-plugin loader-utils mini-css-extract-plugin node-sass optimize-css-assets-webpack-plugin sass-loader style-loader terser-webpack-plugin webpack webpack-cli webpack-dev-server @babel/polyfill @babel/core @babel/plugin-proposal-class-properties @babel/preset-env babel-eslint babel-loader clean-webpack-plugin copy-webpack-plugin cross-env css-loader eslint eslint-loader
-        - index.js -> import '../styles/styles.scss';
-        - move myicon.ico to assets
-        - move index.html to src folder
-        - remove styles.css & create styles/styles.scss
-
-    j. commit && push
+    g. commit && push
         - create github empty repo 'todoapp'
         - push an existing repository from the command line
             - git remote add origin https://github.com/alivanov/todoapp.git

@@ -1,0 +1,47 @@
+1. Environment setup
+
+    a. vs code plugins: ESLint, Prettier
+
+    b. create src/index.js
+        var hello = 'hello world!';console.log(hello);var x = {a: 10,b: 20};console.log(x)
+
+    c. turn ON prettier: 
+        - Code -> Settings -> Workspace -> 'format' 
+            -> Formatting -> Editor: Format On Save
+            -> Text Editor -> Editor: Default Formatter === Prettier - Code formatter
+        - save src/index.js -> ensure prettier works
+
+    d. turn ON esLint (https://github.com/airbnb/javascript)
+        - npm init -y
+        - npm i -D eslint eslint-config-airbnb-base eslint-plugin-import
+        - .eslintrc
+            {
+              "extends": ["airbnb-base"]
+            }
+        - vs code bottom blue panel -> click "ESLINT -> Allow (not 'Allow Everywhere' as it will apply your choise for all workspaces)
+        - ensure eslint shows errors in src/index.js
+
+    e. fix prettier vs eslint "conflicts"
+        - Code -> Settings -> Workspace -> 'prettier' 
+            -> Prettier: Single Quote
+            -> Prettier: Trailing Comma === 'all'
+        - fix eslint 'var' error and ensure eslint warns 'console.log(hello);' only (note that this is not airbnb warning - https://eslint.org/docs/rules/no-console)
+    f. .gitignore
+        .vscode
+        node_modules
+    g. index.html, styles.css, myicon.ico -> copy from Block_1/Lesson_2/Lesson_2_1
+    h. Readme.md
+
+    i. webpack.config.js
+        - npm i -D html-webpack-plugin loader-utils mini-css-extract-plugin node-sass optimize-css-assets-webpack-plugin sass-loader style-loader terser-webpack-plugin webpack webpack-cli webpack-dev-server @babel/polyfill @babel/core @babel/plugin-proposal-class-properties @babel/preset-env babel-eslint babel-loader clean-webpack-plugin copy-webpack-plugin cross-env css-loader eslint eslint-loader
+        - index.js -> import '../styles/styles.scss';
+        - move myicon.ico to assets
+        - move index.html to src folder
+        - remove styles.css & create styles/styles.scss
+
+    j. commit && push
+        - create github empty repo 'todoapp'
+        - push an existing repository from the command line
+            - git remote add origin https://github.com/alivanov/todoapp.git
+            - git branch -M main
+            - git push -u origin main

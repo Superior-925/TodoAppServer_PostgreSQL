@@ -17,7 +17,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/todos', async (req, res) => {
-  const todos = await Todo.findAll();
+  console.log(req.query);
+  let params = {};
+  if (req.query.q === 'complete') {
+    params = { where: { isCompleted: true } };
+  }
+
+  if (req.query.q === 'incomplete') {
+    params = { where: { isCompleted: false } };
+  }
+  const todos = await Todo.findAll(params); //fix list order to be permanent
 
   res.json({ todos });
 });

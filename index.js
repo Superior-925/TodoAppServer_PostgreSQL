@@ -20,22 +20,23 @@ app.get('/todos', async (req, res) => {
   console.log(req.query);
   let params = {};
   if (req.query.q === 'complete') {
-    params = { where: { isCompleted: true } };
+    params = { where: { isDone: true } };
   }
 
   if (req.query.q === 'incomplete') {
-    params = { where: { isCompleted: false } };
+    params = { where: { isDone: false } };
   }
   const todos = await Todo.findAll(params); //fix list order to be permanent
-
+  console.log(todos);
   res.json({ todos });
 });
 
 app.post('/todos', async (req, res) => {
   try {
     const todo = new Todo({
-      title: req.body.title,
-      isCompleted: false,
+      taskText: req.body.taskText,
+      id: req.body.id,
+      isDone: false
     });
 
     const data = await todo.save();

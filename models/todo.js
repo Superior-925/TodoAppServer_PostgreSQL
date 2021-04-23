@@ -7,22 +7,27 @@ module.exports = (sequelize, DataTypes) => {
 
   Todo.init(
     {
-      title: {
-        field: 'title',
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: false,
+        primaryKey: true,
+        allowNull: false
+      },
+      taskText: {
         allowNull: false,
         type: DataTypes.STRING,
         validate: {
           notNull: {
             args: true,
-            msg: 'Tilte is missing',
+            msg: 'Text is missing',
           },
           notEmpty: {
             args: true,
-            msg: 'Tilte is required',
+            msg: 'Text is required',
           },
         },
       },
-      isCompleted: DataTypes.BOOLEAN,
+      isDone: DataTypes.BOOLEAN,
     },
     {
       sequelize,

@@ -6,7 +6,7 @@ module.exports = {
   development: {
     username: DB_USERNAME,
     password: DB_PASSWORD,
-    database: 'todoapp_db_practice_dev',
+    database: 'todos',
     host: DB_HOST,
     dialect: 'postgres',
   },

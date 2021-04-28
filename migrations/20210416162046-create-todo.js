@@ -7,10 +7,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
+      taskText: {
         type: Sequelize.STRING,
       },
-      isCompleted: {
+      isDone: {
         type: Sequelize.BOOLEAN,
       },
       createdAt: {

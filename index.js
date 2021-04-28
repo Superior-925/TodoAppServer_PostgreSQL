@@ -12,72 +12,65 @@ const { Todo } = models;
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello from EXPRESS!');
-});
-
 app.get('/todos', async (req, res) => {
-  console.log(req.query);
-  let params = {};
-  if (req.query.q === 'complete') {
-    params = { where: { isDone: true } };
-  }
-
-  if (req.query.q === 'incomplete') {
-    params = { where: { isDone: false } };
-  }
-  const todos = await Todo.findAll(params); //fix list order to be permanent
-  console.log(todos);
-  res.json({ todos });
-});
-
-app.post('/todos', async (req, res) => {
   try {
-    const todo = new Todo({
-      taskText: req.body.taskText,
-      id: req.body.id,
-      isDone: false
-    });
-
-    const data = await todo.save();
-
-    res.json({ todo: data });
+    const todos = await Todo.findAll();
+    res.send(todos);
   } catch (e) {
-    res.status(422).json({
-      message: e.errors.map(({ path, message }) => ({
-        attribute: path,
-        message,
-      })),
-    });
+    res.status(500).send({ message: 'Todo list cannot be read!' });
   }
 });
 
-app.put('/todos/:id', async (req, res, next) => {
+app.post('/todos', bodyParser.json(), async (req, res) => {
+  const todo = new Todo({
+    taskText: req.body.taskText,
+    isDone: false,
+  });
+
+  try {
+    await todo.save();
+    res.send(todo);
+  } catch (e) {
+    res.status(500).send({ message: 'Todo cannot be created!' });
+  }
+});
+
+app.patch('/todos/:id', async (req, res) => {
   const { id } = req.params;
 
   const todo = await Todo.findByPk(id);
 
-  if (!todo) {
-    next();
-  }
-
-  todo.isCompleted = req.body.isCompleted || !todo.isCompleted;
-
+  todo.isDone = !req.body.isDone;
   const data = await todo.save();
-
-  res.json({ todo: data });
+  res.send(data);
 });
 
-app.delete('/todos/:id', async (req, res, next) => {
-  const { id } = req.params;
+app.delete('/todos', bodyParser.json(), async (req, res) => {
 
-  const todo = await Todo.findByPk(id);
-
-  if (!todo) {
-    next();
+  if (req.body.length !== 0) {
+    try {
+      for (i = 0; i < req.body.length; i++) {
+        await Todo.destroy({ where: { id: req.body[i] } });
+      }
+      res.status(204).send();
+    } catch (e) {
+      res.status(404).send({ message: "Todos doesn't exist!" });
+    }
+    return Promise.resolve();
   }
-  await todo.destroy({ where: { id } });
-  res.status(204).end();
+
+  if (req.body.length === 0) {
+    try {
+      await Todo.destroy({
+        where: {},
+        truncate: true,
+      });
+      res.status(204).send();
+    } catch (e) {
+      res.status(404).send({ message: "Todos doesn't exist!" });
+    }
+    return Promise.resolve();
+  }
 });
 
 // The 404 Route (ALWAYS Keep this as the last route)

@@ -7,12 +7,6 @@ module.exports = (sequelize, DataTypes) => {
 
   Todo.init(
     {
-      id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: false,
-        primaryKey: true,
-        allowNull: false
-      },
       taskText: {
         allowNull: false,
         type: DataTypes.STRING,

@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.changeColumn('Todos', 'title', {
+    await queryInterface.changeColumn('Todos', 'taskText', {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
@@ -10,7 +10,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.changeColumn('Todos', 'title', {
+    await queryInterface.changeColumn('Todos', 'taskText', {
       type: Sequelize.STRING,
     });
   },

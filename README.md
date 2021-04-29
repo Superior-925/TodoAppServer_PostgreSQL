@@ -6,8 +6,23 @@ The application is written by JavaScript/NodeJS/ExpressJS/PostgreSQL
 
 # To launch the app, you need to:
 
-Open terminal and follow the next commands:
- 
+##Prerequisites
+
+You need to install follow software:
+
+- npm
+ ```sh
+sudo apt-get install npm
+  ```
+
+- Node.js 
+
+ ```sh
+$ nvm install 15.14.0
+  ```
+
+##Application installation
+
  - Clone the repository
 
   ```sh
@@ -20,18 +35,14 @@ $ git clone https://github.com/Superior-925/TodoAppServer_PostgreSQL.git
 $ cd TodoAppServer_PostgreSQL
  ```
 
-- Create file ".env" in root and write parameters of connection configuration:
+- Create .env and set the following params::
 
 ```sh
-PORT=3030
-DB_HOST='127.0.0.1'
-DB_USERNAME='test'
-DB_PASSWORD='test'
+PORT
+DB_HOST
+DB_USERNAME
+DB_PASSWORD
  ```
-
-You can set another PORT if PORT 3030 already use.
-You will also need to create a new "test" role or any other with privileges on 
-creating and using databases in PostgreSQL.
 
 - Install dependencies by NPM
 

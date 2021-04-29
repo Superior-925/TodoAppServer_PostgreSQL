@@ -1,4 +1,4 @@
-# To Do List application server side(MongoDB)
+# To Do List application server side(PostgreSQL)
 
 ## Application Technology Stack
 

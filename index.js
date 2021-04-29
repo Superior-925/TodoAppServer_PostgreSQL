@@ -49,9 +49,8 @@ app.delete('/todos', bodyParser.json(), async (req, res) => {
 
   if (req.body.length !== 0) {
     try {
-      for (i = 0; i < req.body.length; i++) {
-        await Todo.destroy({ where: { id: req.body[i] } });
-      }
+      console.log(req.body);
+        await Todo.destroy({ where: { id: req.body } });
       res.status(204).send();
     } catch (e) {
       res.status(404).send({ message: "Todos doesn't exist!" });

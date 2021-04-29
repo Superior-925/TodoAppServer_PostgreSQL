@@ -17,10 +17,10 @@ $ git clone https://github.com/Superior-925/TodoAppServer_PostgreSQL.git
 - Go to project folder
 
 ```sh
-$ cd TodoAppServer_PosrgreSQL
+$ cd TodoAppServer_PostgreSQL
  ```
 
-- Create file ".env" in root and write code:
+- Create file ".env" in root and write parameters of connection configuration:
 
 ```sh
 PORT=3030
@@ -30,7 +30,7 @@ DB_PASSWORD='test'
  ```
 
 You can set another PORT if PORT 3030 already use.
-You will also need to create a new "test" role or any other for the PostgreSQL.
+You will also need to create a new "test" role or any other for using PostgreSQL.
 
 - Install dependencies by NPM
 

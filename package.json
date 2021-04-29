@@ -21,6 +21,9 @@
     "nodemon": "^2.0.7",
     "sequelize-cli": "^6.2.0"
   },
+  "engines": {
+    "node": "15.14.0"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

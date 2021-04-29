@@ -34,7 +34,7 @@ $ git clone https://github.com/Superior-925/TodoAppServer_PostgreSQL.git
 $ cd TodoAppServer_PostgreSQL
  ```
 
-- Create .env and set the following params::
+- Create .env and set the following params:
 
 ```sh
 PORT

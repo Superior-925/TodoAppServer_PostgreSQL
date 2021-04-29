@@ -30,7 +30,9 @@ DB_PASSWORD='test'
  ```
 
 You can set another PORT if PORT 3030 already use.
-You will also need to create a new "test" role or any other for using PostgreSQL.
+You will also need to create a new "test" role or any other with privileges on 
+creating and using databases
+for in PostgreSQL.
 
 - Install dependencies by NPM
 

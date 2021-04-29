@@ -4,9 +4,7 @@
 
 The application is written by JavaScript/NodeJS/ExpressJS/PostgreSQL
 
-# To launch the app, you need to:
-
-##Prerequisites
+## Prerequisites
 
 You need to install follow software:
 
@@ -18,10 +16,11 @@ sudo apt-get install npm
 - Node.js 
 
  ```sh
-$ nvm install 15.14.0
+$ node -v 
+15.14.0
   ```
 
-##Application installation
+## Application installation
 
  - Clone the repository
 

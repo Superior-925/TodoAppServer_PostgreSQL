@@ -49,7 +49,6 @@ app.delete('/todos', bodyParser.json(), async (req, res) => {
 
   if (req.body.length !== 0) {
     try {
-      console.log(req.body);
         await Todo.destroy({ where: { id: req.body } });
       res.status(204).send();
     } catch (e) {

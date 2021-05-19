@@ -1,5 +1,5 @@
 {
-  "name": "todo_practice",
+  "name": "TodoAppServer_PostgreSQL",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,10 +7,12 @@
     "debug": "nodemon -r dotenv/config --inspect index.js",
     "start:dev": "nodemon -r dotenv/config index.js",
     "db:create": "sequelize-cli db:create",
+    "db:create-test": "sequelize-cli --env test db:create",
     "db:migrate": "sequelize-cli db:migrate",
+    "db:migrate-test": "sequelize-cli --env test db:migrate",
     "db:migrate:undo": "sequelize-cli db:migrate:undo",
     "db:g:migration": "sequelize-cli migration:generate --name",
-    "test": "mocha"
+    "test": "NODE_ENV=test mocha"
   },
   "keywords": [],
   "author": "",

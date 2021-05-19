@@ -37,9 +37,7 @@ app.post('/todos', bodyParser.json(), async (req, res) => {
 
 app.patch('/todos/:id', async (req, res) => {
   const { id } = req.params;
-
   const todo = await Todo.findByPk(id);
-
   todo.isDone = !req.body.isDone;
   const data = await todo.save();
   res.send(data);

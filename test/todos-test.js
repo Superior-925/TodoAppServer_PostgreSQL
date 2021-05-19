@@ -1,4 +1,3 @@
-process.env.NODE_ENV = 'development';
 
 let sequelize = require("sequelize");
 const models = require('../models');
@@ -11,12 +10,12 @@ let should = chai.should();
 chai.use(chaiHttp);
 
 describe('Todos', function () {
-    beforeEach((done) => {
-        Todo.destroy({
+
+    beforeEach(async () => {
+        await Todo.destroy({
             where: {},
             truncate: true
         });
-        done();
     });
 
     describe('/GET todo', function () {
@@ -27,7 +26,6 @@ describe('Todos', function () {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
                     res.body.length.should.be.eql(0);
-                    this.timeout(0);
                     done();
                 });
         });
@@ -73,11 +71,12 @@ describe('Todos', function () {
 
     describe('/PATCH/:id todo', function () {
         it('it should UPDATE a todo given the id', (done) => {
-            let todo = new Todo({taskText: "Task for updating", isDone: false});
-            todo.save((err, todo) => {
+            let todo = Todo.build({taskText: "Task for updating", isDone: false});
+            todo.save().then(result => {
                 chai.request(server)
-                    .patch('/todos/:id' + todo.id)
-                    .send({taskText: "Task for updating", isDone: true})
+                    .patch('/todos/' + result.id)
+                    .set('content-type', 'application/json')
+                    .send({isDone: todo.isDone})
                     .end((err, res) => {
                         res.should.have.status(200);
                         res.body.should.be.a('object');
@@ -91,17 +90,17 @@ describe('Todos', function () {
     });
 
     describe('/delete', function () {
-        it('it should DELETE a todo by id', (done) => {
-            let todo = new Todo({taskText: "Task for delete", isDone: true});
-            todo.save((err, book) => {
+        it('it should DELETE a todos', (done) => {
+            let todo = Todo.build({taskText: "Task for delete", isDone: true});
+            todo.save();
                 chai.request(server)
-                    .delete('/todos' + todo.id)
+                    .delete('/todos')
+                    .set('content-type', 'application/json')
+                    .send('[]')
                     .end((err, res) => {
-                        res.should.have.status(200);
+                        res.should.have.status(204);
                         done();
                     });
-            });
         });
     });
-
 });

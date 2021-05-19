@@ -13,14 +13,14 @@ module.exports = {
   test: {
     username: DB_USERNAME,
     password: DB_PASSWORD,
-    database: 'todoapp_db_practice_test',
+    database: 'todos-test',
     host: DB_HOST,
     dialect: 'postgres',
   },
   production: {
     username: DB_USERNAME,
     password: DB_PASSWORD,
-    database: 'todoapp_db_practice_prod',
+    database: 'todos-prod',
     host: DB_HOST,
     dialect: 'postgres',
   },

@@ -67,5 +67,25 @@ $ npm run db:migrate
 $ npm run start:dev
 ```
 
+##To test the server run the following commands
+
+- Create test database
+
+```sh
+$ npm run db:create-test
+ ```
+
+- Create a test table
+
+```sh
+$ npm run db:migrate-test
+ ```
+
+- Start MOCHA
+
+```sh
+$ npm run test
+ ```
+
 If you have questions - contact me on email skykeeper925@gmail.com.
 Best regards Anton Logunov.

@@ -67,6 +67,12 @@ $ npm run db:migrate
 $ npm run start:dev
 ```
 
+## You can create databases and migrate with the following command
+
+```sh
+$ npm run setup:db
+ ```
+
 ## To test the server run the following commands
 
 - Create test database

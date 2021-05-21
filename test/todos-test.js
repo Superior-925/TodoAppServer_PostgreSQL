@@ -34,9 +34,6 @@ describe('Todos', function () {
                     done();
                 });
         });
-    });
-
-    describe('/GET todo', function () {
         it('it should GET all todos', (done) => {
             let N =3;
             for (let i = 1; i <= N; i++) {
@@ -117,12 +114,8 @@ describe('Todos', function () {
                         done();
                     });
         });
-    });
-
-    describe('/delete', function () {
-
         it('it should delete a todo given the id', (done) => {
-           query('Task for deleting').then(result => {
+            query('Task for deleting').then(result => {
                 chai.request(server)
                     .delete('/todos')
                     .set('content-type', 'application/json')
@@ -133,7 +126,6 @@ describe('Todos', function () {
                     });
             });
         });
-
     });
 
 });

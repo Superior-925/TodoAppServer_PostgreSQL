@@ -62,7 +62,7 @@ describe('Todos', function () {
                 .post('/todos')
                 .send(todo)
                 .end((err, res) => {
-                    res.should.have.status(500);
+                    res.should.have.status(422);
                     done();
                 });
         });

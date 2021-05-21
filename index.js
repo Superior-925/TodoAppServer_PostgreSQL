@@ -32,7 +32,7 @@ app.post('/todos', bodyParser.json(), async (req, res) => {
     await todo.save();
     res.send(todo);
   } catch (e) {
-    res.status(500).send({ message: 'Todo cannot be created!' });
+    res.status(422).send({ message: 'Todo cannot be created!' });
   }
 });
 

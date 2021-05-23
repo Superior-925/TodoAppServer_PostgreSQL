@@ -35,10 +35,12 @@ describe('Todos', function () {
                 });
         });
         it('it should GET all todos', (done) => {
+            let promises = [];
             let N =3;
             for (let i = 1; i <= N; i++) {
-                query("Todo №" + i)
+               promises.push(query("Todo №" + i));
             }
+            Promise.all(promises).then((result) => {
             chai.request(server)
                 .get('/todos')
                 .end((err, res) => {
@@ -47,6 +49,7 @@ describe('Todos', function () {
                     res.body.length.should.be.eql(3);
                     done();
                 });
+            })
         });
     });
 
@@ -104,7 +107,7 @@ describe('Todos', function () {
 
     describe('/delete', function () {
         it('it should DELETE all todos', (done) => {
-            query('Task for deleting')
+            query('Task for deleting').then(result => {
                 chai.request(server)
                     .delete('/todos')
                     .set('content-type', 'application/json')
@@ -113,6 +116,7 @@ describe('Todos', function () {
                         res.should.have.status(204);
                         done();
                     });
+            });
         });
         it('it should delete a todo given the id', (done) => {
             query('Task for deleting').then(result => {
